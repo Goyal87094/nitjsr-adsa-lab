@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Function to merge two sorted halves of arr[start..mid] and arr[mid+1..end]
+
 void combine(int arr[], int start, int mid, int end) {
     int leftSize = mid - start + 1;
     int rightSize = end - mid;
@@ -9,13 +9,13 @@ void combine(int arr[], int start, int mid, int end) {
     int *leftArr = (int*)malloc(leftSize * sizeof(int));
     int *rightArr = (int*)malloc(rightSize * sizeof(int));
 
-    // Copy elements into temporary arrays
+   
     for (int i = 0; i < leftSize; i++)
         leftArr[i] = arr[start + i];
     for (int j = 0; j < rightSize; j++)
         rightArr[j] = arr[mid + 1 + j];
 
-    // Merge back into original array
+    
     int i = 0, j = 0, k = start;
     while (i < leftSize && j < rightSize) {
         if (leftArr[i] <= rightArr[j]) {
@@ -25,7 +25,6 @@ void combine(int arr[], int start, int mid, int end) {
         }
     }
 
-    // Copy leftovers
     while (i < leftSize) arr[k++] = leftArr[i++];
     while (j < rightSize) arr[k++] = rightArr[j++];
 
@@ -33,7 +32,7 @@ void combine(int arr[], int start, int mid, int end) {
     free(rightArr);
 }
 
-// Iterative bottom-up merge sort
+
 void mergeSortIterative(int arr[], int n) {
     for (int size = 1; size < n; size *= 2) {
         for (int start = 0; start < n - 1; start += 2 * size) {
@@ -47,7 +46,7 @@ void mergeSortIterative(int arr[], int n) {
     }
 }
 
-// Print array contents
+
 void showArray(int arr[], int n) {
     for (int i = 0; i < n; i++)
         printf("%d ", arr[i]);
@@ -69,3 +68,4 @@ int main() {
 
     return 0;
 }
+
